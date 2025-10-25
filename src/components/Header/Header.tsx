@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import Link from 'next/link'
-import logo from './../../../public/assets/logo.jpg'
+import logo from './../../../public/assets/logo.png'
 import { ActiveLink } from '../Active-link'
 
 export function Header(){
@@ -12,8 +12,8 @@ export function Header(){
         <a href="">
             <Image
             src={logo}
-            width={80}
-            height={80}
+            width={85}
+            height={85}
             quality={100}
             alt='image'
             />
