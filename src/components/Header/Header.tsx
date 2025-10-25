@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 import Link from 'next/link'
 import logo from './../../../public/assets/logo.jpg'
+import { ActiveLink } from '../Active-link'
 
 export function Header(){
     return(
@@ -19,21 +20,20 @@ export function Header(){
         </a>
 
         <nav>
-            <Link
-            href="/">
+            <ActiveLink href="/" activeClassName={styles.active}>
                 <p>Home</p>
-            </Link>
+            </ActiveLink>
 
-            <Link
-            href="/">
+            <ActiveLink href="/posts" activeClassName={styles.active}>
                 <p>Conteúdos</p>   
-            </Link>
+            </ActiveLink>
 
-            <Link
-            href="/">
+            <ActiveLink href="/about" activeClassName={styles.active}>
                 <p>Quem somos nós</p>  
-            </Link>
+            </ActiveLink>
         </nav>
+
+        <a className={styles.readyButton} type='button' href="#">COMECAR</a>
         </div>
         </header>
         </>
