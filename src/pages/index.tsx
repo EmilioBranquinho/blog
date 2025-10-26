@@ -21,7 +21,7 @@ export default function Home() {
         </a>
       </section>
 
-      <img src="/assets/imgHome.jpg" alt="" />
+      <img src="/assets/sub-zeromk1-2.png" alt="" />
     </div>
 
     <hr className={styles.divisor} />
