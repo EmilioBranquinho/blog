@@ -1,0 +1,93 @@
+{
+  "format": "custom",
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": "titulo principal"
+        }
+      },
+      "sub_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "sub title",
+          "placeholder": "subtitulo principal",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "linkaction": {
+        "type": "Link",
+        "config": {
+          "label": "linkAction",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "install_games": {
+        "type": "Text",
+        "config": {
+          "label": " install games",
+          "placeholder": ""
+        }
+      },
+      "install_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "install content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "install_banner": {
+        "type": "Image",
+        "config": {
+          "label": "install banner",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "title_news": {
+        "type": "Text",
+        "config": {
+          "label": "title news",
+          "placeholder": ""
+        }
+      },
+      "news_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "news content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "banner_news": {
+        "type": "Image",
+        "config": {
+          "label": "banner news",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
