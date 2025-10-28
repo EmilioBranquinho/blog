@@ -39,15 +39,17 @@ export default function Posts( { posts: blogPosts }: PostsProps ){
             {posts.map((post => (
                 <>
                 <Link
+                href={`posts/${post.slug}`}
                 key={post.slug}
-                className={style.link}
-                href="/">
+                className={style.link}>
                 <Image
                 src={post.post_cover}
                 alt=""
                 width={720}
                 height={410}
                 quality={100}
+                placeholder="blur"
+                blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNksPn/AAADnAIdiEsNQAAAAABJRU5ErkJggg=="
                 />
                 <strong>{post.post_title}</strong>
                 <time className={style.timeStyles}>
@@ -57,9 +59,6 @@ export default function Posts( { posts: blogPosts }: PostsProps ){
                 </Link>    
                 </>
             )))}
-       
-
-
                 <div className={style.buttonNavigate}>
                     <div>
                         <button>
@@ -69,7 +68,6 @@ export default function Posts( { posts: blogPosts }: PostsProps ){
                             <FiChevronLeft size={25} color="#FFFF"/>   
                         </button>
                     </div>
-
                     <div>
                         <button>
                             <FiChevronRight size={25} color="#FFFF"/>   
@@ -95,9 +93,8 @@ export const getStaticProps: GetStaticProps = async() =>{
     fetch: ["post_title", "post_cover", "post_desciption"] 
 });
 
-
     const posts = response.results.map(post =>{
- const paragraph = post.data.post_description.find(block => block.type === "paragraph") as { text?: string } | undefined;
+    const paragraph = post.data.post_description.find(block => block.type === "paragraph") as { text?: string } | undefined;
 
         return{
             slug: post.uid,
@@ -111,8 +108,6 @@ export const getStaticProps: GetStaticProps = async() =>{
             })
         }
     })
-
-    console.log(posts)
 
     return{
         props: { posts },
