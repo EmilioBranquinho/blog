@@ -70,6 +70,124 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 /**
+ * Content for about documents
+ */
+interface AboutDocumentData {
+  /**
+   * blog name field in *about*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome do blog
+   * - **API ID Path**: about.blog_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  blog_name: prismic.KeyTextField;
+
+  /**
+   * blog description field in *about*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descrição
+   * - **API ID Path**: about.blog_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  blog_description: prismic.RichTextField;
+
+  /**
+   * blog logo field in *about*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.blog_logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  blog_logo: prismic.ImageField<never>;
+
+  /**
+   * facebook link field in *about*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: facebook
+   * - **API ID Path**: about.facebook_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  facebook_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * instagram link field in *about*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Instagram
+   * - **API ID Path**: about.instagram_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  instagram_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * twitter link field in *about*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Twitter
+   * - **API ID Path**: about.twitter_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  twitter_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * whatsapp link field in *about*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: WhatsApp
+   * - **API ID Path**: about.whatsapp_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  whatsapp_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * about document from Prismic
+ *
+ * - **API ID**: `about`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
+
+/**
  * Content for Home documents
  */
 interface HomeDocumentData {
@@ -241,7 +359,7 @@ interface PostDocumentData {
 export type PostDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
 
-export type AllDocumentTypes = HomeDocument | PostDocument;
+export type AllDocumentTypes = AboutDocument | HomeDocument | PostDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -264,6 +382,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutDocument,
+      AboutDocumentData,
       HomeDocument,
       HomeDocumentData,
       PostDocument,

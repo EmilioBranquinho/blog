@@ -2,7 +2,24 @@ import Head from "next/head";
 import style from './about.module.scss'
 import { FaFacebook } from "react-icons/fa";
 import { BsFacebook, BsInstagram, BsTwitter, BsWhatsapp } from "react-icons/bs";
-export default function About(){
+import { GetStaticProps } from "next";
+import { getPrismicClient } from "@/services/prismic";
+import { asHTML } from "@prismicio/client";
+
+
+interface AboutProps{
+    about: {
+        blog_name: string,
+        blog_logo: string,
+        blog_description: string,
+        facebook_link: string,
+        instagram_link: string,
+        twitter_link: string,
+        whatsapp_link: string       
+    }
+}
+
+export default function About({ about }: AboutProps){
     return(
         <>
         <Head>
@@ -12,15 +29,12 @@ export default function About(){
         <main className={style.container}>
             <div className={style.containerHeader}>
                 <section className={style.ctaText}>
-                    <h1>4EyesDude</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quia a unde similique praesentium voluptas, velit rem? Cupiditate dolore sed nobis, itaque pariatur, beatae minus perspiciatis nihil molestias doloremque dignissimos.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi voluptate eligendi minus. Ipsa placeat vitae ratione earum accusamus mollitia blanditiis magnam aut? Quam mollitia minima suscipit ipsam eveniet corrupti ab?.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt magnam facere obcaecati odio magni quibusdam quos commodi minus optio? Sit quos suscipit perferendis enim distinctio! Nostrum deserunt necessitatibus corporis aspernatur.
-                    </p>
-                    <a href=""><BsFacebook/></a>
-                    <a href=""><BsInstagram/></a>
-                    <a href=""><BsWhatsapp/></a>
-                    <a href=""><BsTwitter/></a>
+                    <h1>{about.blog_name}</h1>
+                    <div dangerouslySetInnerHTML={{__html: about.blog_description}}></div>
+                    <a href={about.facebook_link} ><BsFacebook/></a>
+                    <a href={about.instagram_link}><BsInstagram/></a>
+                    <a href={about.whatsapp_link}><BsWhatsapp/></a>
+                    <a href={about.twitter_link}><BsTwitter/></a>
                 </section>
 
                 <img src="/assets/logo.png" alt="" />
@@ -28,4 +42,30 @@ export default function About(){
         </main>
         </>
     )
+}
+
+export const getStaticProps: GetStaticProps = async() =>{
+
+    const prismic = getPrismicClient();
+
+    const response = await prismic.getByType("about");
+
+    const { blog_name, blog_logo, blog_description, facebook_link, twitter_link, whatsapp_link, instagram_link } = response.results[0].data;
+
+    const about = {
+        blog_name: blog_name,
+        blog_logo: blog_logo.url,
+        blog_description: asHTML(blog_description),
+        facebook_link: facebook_link.text,
+        instagram_link: instagram_link.text,
+        twitter_link: twitter_link.text,
+        whatsapp_link: whatsapp_link.text
+    }
+
+    return{
+        props:{
+            about
+        },
+        revalidate: 60 * 5
+    }
 }
