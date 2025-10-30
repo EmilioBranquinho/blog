@@ -50,17 +50,10 @@ export const getServerSideProps: GetServerSideProps = async({ params, req }) => 
     const slug = params?.slug as string;
     
     const prismic = getPrismicClient(req);
+ 
+ try{
 
     const response = await prismic.getByUID('post', String(slug), {});
-
-    if(!response){
-        return{
-            redirect:{
-                destination: "/posts",
-                permanent: false
-            }
-        }
-    }
 
     const postData = {
         id: response.id,
@@ -75,11 +68,20 @@ export const getServerSideProps: GetServerSideProps = async({ params, req }) => 
         })
     }
 
-    console.log(postData)
-
     return{
         props:{
             postData
         }
     }
+    
+   } catch (error) {
+    console.log(error)
+    
+    return{
+        redirect:{
+            destination: "/posts",
+            permanent: false
+        }
+    }
+ }
 }

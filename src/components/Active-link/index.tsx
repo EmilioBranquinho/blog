@@ -4,7 +4,7 @@ import { cloneElement, ReactElement } from "react";
 
 
 interface ActiveLinkProps extends LinkProps{
-    children: ReactElement;
+    children: ReactElement<{className: string}>;
     activeClassName: string;
 }
 
