@@ -32,7 +32,7 @@
 
     img{
         max-width: 100%;
-        max-height: 250px;
+        max-height: 450px;
         border-radius: 6px;
         border-image: linear-gradient(95deg,#31b4d4, transparent ) 1;
     }
@@ -91,3 +91,16 @@
     }
 
 }
+
+@media (max-width: 950px){
+    .container{
+        .posts{
+            a{
+                img{
+                   max-height: 250px;  
+                }
+            }
+        }
+    }
+}
+
