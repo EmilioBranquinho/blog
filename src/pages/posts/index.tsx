@@ -33,7 +33,6 @@ export default function Posts( { posts: blogPosts, currentPage, totalPages }: Po
    const[current, setCurrent] = useState(Number(currentPage));
    const[totalPage, setTotalPage] = useState(Number(totalPages))
 
-
 async function getPage(pageNumber: number){
     const prismic = await getPrismicClient();
     
