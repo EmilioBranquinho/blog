@@ -35,7 +35,7 @@ export default function Home( { content }: ContentProps) {
       <section className={styles.ctaText}>
         <h1>{content.title}</h1>
         <span>{content.title_content}</span>
-        <a href={content.linkaction}>
+        <a href="/posts">
           <button>
             Ver conteúdos
           </button>
