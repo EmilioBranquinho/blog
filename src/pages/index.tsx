@@ -41,12 +41,9 @@ export default function Home( { content }: ContentProps) {
           </button>
         </a>
       </section>
-
       <img src="/assets/sub-zeromk1-2.png" alt="" />
     </div>
-
     <hr className={styles.divisor} />
-
     <div className={styles.sectionContent}>
       <section>
         <h2>{content.install_games_title}</h2>
@@ -74,7 +71,7 @@ export default function Home( { content }: ContentProps) {
       alt=""
       />
 
-      <h2>Mais de <span className={styles.visitantes}>15 mil visitantes</span> Semanais</h2>
+      <h2>Mais de <span className={styles.visitantes}>N visitantes</span> Semanais</h2>
       <span>Faça a subscrição para receber as notícias direto no seu celular</span>
       <a href="">
         <button>SUBSCREVER</button>
