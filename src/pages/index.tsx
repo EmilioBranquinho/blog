@@ -37,7 +37,7 @@ export default function Home( { content }: ContentProps) {
         <span>{content.title_content}</span>
         <a href={content.linkaction}>
           <button>
-            Começar agora 
+            Ver conteúdos
           </button>
         </a>
       </section>

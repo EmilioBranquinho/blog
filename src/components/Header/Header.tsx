@@ -33,7 +33,7 @@ export function Header(){
             </ActiveLink>
         </nav>
 
-        <a className={styles.readyButton} type='button' href="#">COMECAR</a>
+        {/* <a className={styles.readyButton} type='button' href="#">COMECAR</a> */}
         </div>
         </header>
         </>
