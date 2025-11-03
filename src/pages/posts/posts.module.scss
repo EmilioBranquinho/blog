@@ -9,11 +9,11 @@
     margin: 5rem auto;
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    
+    gap: 50px;   
 
     p{
-        display: block;   
+        display: block; 
+        color: black;  
     }
 
     & + p{
@@ -41,11 +41,11 @@
         display: block;
         font-size: 1.5rem;
         line-height: 2rem;
-        color: var(--white);
+        color: black;
     }
 
     p{
-        color: var(--white);
+        color: black;
         margin-top: 0.5rem;
         line-height: 1.62rem;
         

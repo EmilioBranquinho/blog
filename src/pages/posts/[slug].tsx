@@ -4,6 +4,7 @@ import { getPrismicClient } from '@/services/prismic';
 import { asHTML, asText } from '@prismicio/client';
 import Head from 'next/head';
 import Image from 'next/image';
+import { BiCalendar } from 'react-icons/bi';
 
 interface PostProps{
     id: string,
@@ -37,7 +38,9 @@ export default function Post({postData}: Post){
                 blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNksPn/AAADnAIdiEsNQAAAAABJRU5ErkJggg=='
                 />
             <h1>{postData.post_title}</h1>
-            <time>{postData.updatedAt}</time>
+                <time className={style.timeStyles}>
+                   <i><BiCalendar/></i> {postData.updatedAt}
+                </time>
             <div className={style.postContent} dangerouslySetInnerHTML={{__html: postData.post_description}}></div>
            </article>
         </main>
