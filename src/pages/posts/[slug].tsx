@@ -28,19 +28,22 @@ export default function Post({postData}: Post){
         </Head>
         <main className={style.container}>
             <article className={style.post}>
-                <Image
-                src={postData.post_cover}
-                quality={100}
-                width={720}
-                height={410}
-                alt={postData.post_title}
-                placeholder='blur'
-                blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNksPn/AAADnAIdiEsNQAAAAABJRU5ErkJggg=='
-                />
-            <h1>{postData.post_title}</h1>
+                <div className={style.imageAndTitle}>
+                    <Image
+                    src={postData.post_cover}
+                    quality={100}
+                    width={720}
+                    height={410}
+                    alt={postData.post_title}
+                    placeholder='blur'
+                    blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNksPn/AAADnAIdiEsNQAAAAABJRU5ErkJggg=='
+                    />
                 <time className={style.timeStyles}>
                    <i><BiCalendar/></i> {postData.updatedAt}
-                </time>
+                </time>                    
+                <h1>{postData.post_title}</h1>
+                </div>
+
             <div className={style.postContent} dangerouslySetInnerHTML={{__html: postData.post_description}}></div>
            </article>
         </main>
